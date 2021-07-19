@@ -44,10 +44,6 @@ p{
   margin:auto;
 }
 
-.middle{
-  margin:100px 0;
-}
-
 .bottom{
   background-color:#FFDAB9;
   height:40px;
@@ -58,7 +54,7 @@ a{
   color:#000000;
   font-family: 'Montserrat', sans-serif;
   text-decoration:none;
-  margin:0 10px;
+  margin:0 5px;
 }
 
 a:hover{

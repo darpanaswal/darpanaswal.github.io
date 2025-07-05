@@ -70,7 +70,7 @@ body {
 
 .news-text {
   flex: 1;
-  color: #66ccff;
+  color: #ddd;  /* Match body text color */
 }
 
 a {
@@ -83,5 +83,18 @@ a:visited {
 }
 
 a:hover {
+  text-decoration: underline;
+}
+
+.news-text a {
+  color: #26c6da;
+  text-decoration: none;
+}
+
+.news-text a:visited {
+  color: #26c6da;
+}
+
+.news-text a:hover {
   text-decoration: underline;
 }

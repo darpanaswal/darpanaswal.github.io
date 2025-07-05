@@ -55,3 +55,20 @@ body {
     padding: 1rem;
     background: #1f1f1f;
   }
+
+.news-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.news-date {
+  min-width: 100px;
+  font-weight: bold;
+  color: #ddd;
+}
+
+.news-text {
+  flex: 1;
+  color: #66ccff;
+}

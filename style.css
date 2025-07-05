@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #ddd;
+    background-color: #121212;
+  }
+  
+  header {
+    background: #1f1f1f;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  nav a {
+    color: #66ccff;
+    margin-left: 1rem;
+    text-decoration: none;
+  }
+  
+  section {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .bio {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+  
+  .bio img {
+    width: 150px;
+    border-radius: 8px;
+  }
+  
+  h2 {
+    border-bottom: 2px solid #66ccff;
+  }
+  
+  .pub {
+    margin-bottom: 1.5rem;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #1f1f1f;
+  }

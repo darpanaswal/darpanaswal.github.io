@@ -116,7 +116,8 @@ a:hover {
 }
 
 .pub-card img {
-  width: 150px;
+  width: 100%;
+  max-width: 450px;
   height: auto;
   border-radius: 4px;
   object-fit: cover;
@@ -148,4 +149,17 @@ a:hover {
 .pub-desc {
   color: #ccc;
   font-size: 0.95rem;
+}
+
+.bio-photo img {
+  width: 200px;       /* increase size from 150 to 200 or even 220 if you want */
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.signature {
+  color: #aaa;
+  font-size: 0.9rem;
+  text-align: center;
 }

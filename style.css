@@ -72,3 +72,16 @@ body {
   flex: 1;
   color: #66ccff;
 }
+
+a {
+  color: #26c6da;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #26c6da;
+}
+
+a:hover {
+  text-decoration: underline;
+}

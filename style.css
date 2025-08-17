@@ -129,6 +129,20 @@ nav a.active::after {
     flex: 1;
 }
 
+.bio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.2rem;
+}
+
+.bio-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #111;
+}
+
 .bio-text h1 {
     font-size: 1.8rem;
     font-weight: 600;

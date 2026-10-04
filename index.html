@@ -82,6 +82,26 @@
       
         <div class="news-list">
 
+          <!-- DLIG preprint + NeurIPS workshop acceptance -->
+          <article class="news-card">
+            <ul class="news-updates">
+              <li class="news-update">
+                <div class="update-date">Oct 1, 2026</div>
+                <div class="update-text">
+                  Preprint Alert!
+                  <a href="https://arxiv.org/abs/2610.01177">
+                    Temporally-Resolved Token Attribution Reveals the Generation Dynamics of Diffusion Language Models</a>.
+                </div>
+              </li>
+              <li class="news-update">
+                <div class="update-date">Sep 30, 2026</div>
+                <div class="update-text">
+                  <strong>Update:</strong> Accepted at the Neural Network Artifacts as a New Data Modality Workshop at NeurIPS 2026!
+                </div>
+              </li>
+            </ul>
+          </article>
+
           <!-- Hinglish red-teaming preprint -->
           <article class="news-card">
             <ul class="news-updates">
@@ -226,6 +246,25 @@
 
         <div class="pub-grid scroll-track" id="pub-scroll">
 
+            <!-- Pub DLIG -->
+            <div class="pub-card">
+                <a href="https://arxiv.org/abs/2610.01177" class="pub-img" aria-label="DLIG paper">
+                    <canvas class="pub-pdf" data-pdf="images/DLIG_poster.pdf" role="img"
+                        aria-label="Temporally-Resolved Token Attribution poster"></canvas>
+                </a>
+                <div class="pub-info">
+                    <h3 class="pub-title">
+                        Temporally-Resolved Token Attribution Reveals the Generation Dynamics of Diffusion Language Models
+                    </h3>
+                    <p class="pub-authors"><strong>Darpan Aswal</strong>, Céline Hudelot.</p>
+                    <p class="pub-desc">We introduce Diffusion Layer Integrated Gradients (DLIG), which extends
+                        Integrated Gradients to arbitrary layers and denoising steps of diffusion language models,
+                        attributing a model's progressive commitment to a completion while preserving the IG axioms.
+                        Applying DLIG to word-sense disambiguation, multi-hop reasoning and sentence infilling, we show
+                        how DLMs use their inputs across positions, layers and denoising time.</p>
+                </div>
+            </div>
+
             <!-- Pub 0 -->
             <div class="pub-card">
                 <a href="https://arxiv.org/abs/2606.12689" class="pub-img" aria-label="Observable Patterns paper">
@@ -358,6 +397,7 @@
         </div>
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>
         const albumData = {
             1: ['images/album1/cover.jpeg',],
@@ -458,6 +498,34 @@
         }
 
         setupAutoScroll(document.getElementById('pub-scroll'));
+
+        // Render the first page of PDF figures (<canvas data-pdf="...">) in publication cards.
+        function renderPdfFigures() {
+            const canvases = document.querySelectorAll('canvas[data-pdf]');
+            if (!canvases.length || !window.pdfjsLib) return;
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+            canvases.forEach(async (canvas) => {
+                try {
+                    const pdf = await pdfjsLib.getDocument(canvas.dataset.pdf).promise;
+                    const page = await pdf.getPage(1);
+                    const box = canvas.parentElement.getBoundingClientRect();
+                    const base = page.getViewport({ scale: 1 });
+                    const fit = Math.min(box.width / base.width, box.height / base.height);
+                    const dpr = window.devicePixelRatio || 1;
+                    // Render at 2x the display size so the poster stays sharp on hover/zoom.
+                    const viewport = page.getViewport({ scale: fit * dpr * 2 });
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+                } catch (err) {
+                    console.error('Could not render PDF figure', canvas.dataset.pdf, err);
+                    canvas.parentElement.classList.add('pub-pdf-fallback');
+                }
+            });
+        }
+        renderPdfFigures();
         setupAutoScroll(document.getElementById('album-scroll'));
     </script>
 </body>
